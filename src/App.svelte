@@ -116,6 +116,10 @@
       return str + "ธมฺโม"
     },
 
+    function วณฺโณ(str: string) {
+      return str + "วณฺโณ"
+    },
+
     function สิโต(str: string) {
       return str + "สิโต"
     },
