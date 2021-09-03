@@ -18,18 +18,53 @@
   const gtagId = null
 
   let output: string = ""
-  let input = "ธนานนท์ ปฏิญญาศักดิกุล"
+  let input = "อนุชา ปฏิญญา"
 
   function generate() {
     let [name, surname] = input.split(" ", 2)
-    name = name.replace(/์$/, "")
-    surname = surname.replace(/์$/, "")
-    const surnameChars = surname.split("")
-    const nameChars = name.split("")
-    name = [nameChars.slice(0, -1).join(""), "โ", nameChars.slice(-1).join("")].join("")
-    surname = [surnameChars.slice(0, -1).join(""), "โ", surnameChars.slice(-1).join("")].join("")
-    output = [name, surname].join(" ")
+
+    output = [random(name), random(surname)].join(" ")
   }
+
+  function random(name: string) {
+    const generated = rules[Math.floor(Math.random() * rules.length)](name)
+
+    if (generated) {
+      return generated
+    }
+
+    return random(name)
+  }
+
+  const rules = [
+    function โ(str: string) {
+      str = str.replace(/์$/, "")
+
+      if (str.slice(-1) == "า") {
+        return false
+      }
+
+      const chars = str.split("")
+
+      return [chars.slice(0, -1).join(""), "โ", chars.slice(-1).join("")].join("")
+    },
+
+    function าคโร(str: string) {
+      if (str.slice(-1) != "า") {
+        return false
+      }
+
+      return str.replace(/า$/, "าคโร")
+    },
+
+    function าจโณ(str: string) {
+      if (str.slice(-1) != "า") {
+        return false
+      }
+
+      return str.replace(/า$/, "าจโณ")
+    },
+  ]
 </script>
 
 <Kofi name="narze" label="Support Me" />
