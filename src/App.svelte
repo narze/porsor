@@ -1,6 +1,7 @@
 <script lang="ts">
   import "twind/shim"
   import { tw } from "twind"
+  import Copy from "copy-to-clipboard"
   import logo from "./assets/svelte.png"
   import Head from "./lib/Head.svelte"
   import Kofi from "./lib/Kofi.svelte"
@@ -8,7 +9,7 @@
   import Social from "./lib/Social.svelte"
 
   const url = "https://porsor.vercel.app"
-  const title = "PorSor Name Generator"
+  const title = "ชื่อ พส ของคุณ"
 
   const menuItems = [{ name: "Github", url: "https://github.com/narze/porsor" }]
 
@@ -18,7 +19,8 @@
   const gtagId = null
 
   let output: string = ""
-  let input = "อนุชา ปฏิญญา"
+  let input = "สมชาย มนูญชัย"
+  let copied: boolean
 
   function generate() {
     let [name, surname] = input.split(" ", 2)
@@ -27,6 +29,10 @@
   }
 
   function random(name: string) {
+    if (!name) {
+      return ""
+    }
+
     const generated = rules[Math.floor(Math.random() * rules.length)](name)
 
     if (generated) {
@@ -36,11 +42,12 @@
     return random(name)
   }
 
+  // Add new rules as functions (return false if not applicable)
   const rules = [
     function โ(str: string) {
       str = str.replace(/์$/, "")
 
-      if (str.slice(-1) == "า") {
+      if (str.slice(-1).match(/[ะ-์]$/)) {
         return false
       }
 
@@ -64,7 +71,65 @@
 
       return str.replace(/า$/, "าจโณ")
     },
+
+    function ามโย(str: string) {
+      if (str.match(/[ก-ฮ]$/)) {
+        return str + "ามโย"
+      }
+    },
+
+    function าโร(str: string) {
+      if (str.match(/[ก-ฮ]$/)) {
+        return str + "าโร"
+      }
+    },
+
+    function วํโส(str: string) {
+      return str + "วํโส"
+    },
+
+    function ชโย(str: string) {
+      return str + "ชโย"
+    },
+
+    function ธมฺโม(str: string) {
+      return str + "ธมฺโม"
+    },
+
+    function ตโน(str: string) {
+      return str + "ตโน"
+    },
+
+    function มโน(str: string) {
+      return str + "มโน"
+    },
+
+    function โร(str: string) {
+      return str + "โร"
+    },
+
+    function นนฺโท(str: string) {
+      return str + "นนฺโท"
+    },
+
+    function ธมฺโม(str: string) {
+      return str + "ธมฺโม"
+    },
+
+    function สิโต(str: string) {
+      return str + "สิโต"
+    },
   ]
+
+  function copyOutput() {
+    Copy(output)
+
+    copied = true
+
+    setTimeout(() => {
+      copied = false
+    }, 2000)
+  }
 </script>
 
 <Kofi name="narze" label="Support Me" />
@@ -73,7 +138,7 @@
 <Head {title} {description} {url} {imageUrl} {gtagId} />
 
 <main class="w-full h-screen flex flex-col gap-2 justify-center items-center">
-  <h1 class="text-6xl text-green-400 flex flex-col">PorSor Name Generator</h1>
+  <h1 class="text-6xl text-green-400 flex flex-col">{title}</h1>
   <input type="text" class="border w-60 px-2 py-1 rounded" bind:value={input} />
 
   <button class="border w-60 px-2 py-1 rounded" on:click={generate}>Generate</button>
@@ -85,7 +150,11 @@
     value={output}
   />
 
-  <button class="border w-60 px-2 py-1 rounded" on:click={() => {}}>Copy</button>
+  <button class="border w-60 px-2 py-1 rounded" on:click={copyOutput}>Copy</button>
+
+  {#if copied}
+    <p>Copied!</p>
+  {/if}
 </main>
 
 <style>
