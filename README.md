@@ -1,23 +1,9 @@
-# Single Page Svelte
+# พส
 
-Build a single page app with Svelte, quickly.
+ค้นหาชื่อ พส ของคุณ
 
-## Setup
+## วิธีเพิ่มกฏ
 
-- Clone/fork this repository
-- `yarn` or `npm install`
-- `yarn dev` or `npm run dev`
-
-## What's included
-
-- Svelte (TypeScript), built with [Vite](https://vitejs.dev)
-- Tailwind.css using [Twind](https://twind.dev)
-- [Ko-fi](https://ko-fi.com)
-- [Jest](https://jestjs.io) & [@testing-library/svelte](https://testing-library.com/docs/svelte-testing-library)
-
-## TODOs
-
-- [ ] Responsive design (Mobile first)
-- [ ] Linting with ESLint
-- [ ] Toggleable Dark Mode
-- [ ] Modal view (About/Credits)
+- ไปที่ [src/App.svelte](./src/App.svelte)
+- เพิ่มฟังก์ชั่นที่แปลง String -> String
+- ส่งมาเป็น Pull Request
