@@ -123,6 +123,9 @@
     function สิโต(str: string) {
       return str + "สิโต"
     },
+    function ธีร(str: string){
+      return "ธีร" + str
+    }
   ]
 
   function copyOutput() {
