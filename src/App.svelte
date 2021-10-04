@@ -123,8 +123,13 @@
     function สิโต(str: string) {
       return str + "สิโต"
     },
+    
     function ตาลปุตฺโต(str: string) {
       return str + "ตาลปุตฺโต"
+    },
+
+    function วิชฺโช(str: string) {
+      return str + "วิชฺโช"
     },
   ]
 
