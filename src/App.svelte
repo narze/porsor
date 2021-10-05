@@ -131,6 +131,14 @@
     function วิชฺโช(str: string) {
       return str + "วิชฺโช"
     },
+    
+    function ภวนฺตุ(str: string) {
+      return str + "ภวนฺตุ"
+    },    
+    
+    function เต(str: string) {
+      return str + "เต"
+    },  
   ]
 
   function copyOutput() {
