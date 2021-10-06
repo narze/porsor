@@ -7,6 +7,7 @@
   import Kofi from "./lib/Kofi.svelte"
   import Menu from "./lib/Menu.svelte"
   import Social from "./lib/Social.svelte"
+  import { rules } from "./rules";
 
   const url = "https://porsor.vercel.app"
   const title = "ชื่อ พส ของคุณ"
