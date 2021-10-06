@@ -124,6 +124,10 @@
       return str + "สิโต"
     },
     
+    function ธีร(str: string){
+      return "ธีร" + str
+    },
+    
     function ตาลปุตฺโต(str: string) {
       return str + "ตาลปุตฺโต"
     },
