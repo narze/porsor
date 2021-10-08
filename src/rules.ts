@@ -83,12 +83,16 @@ export const rules: Array<(data: string) => string | boolean> = [
   function ตาลปุตฺโต(str: string) {
     return str + "ตาลปุตฺโต"
   },
-  
+
   function ธีร(str: string){
     return "ธีร" + str
   },
 
   function วิชฺโช(str: string) {
     return str + "วิชฺโช"
+  },
+
+  function ภูริทตฺโต(str: string) {
+    return str + "ภูริทตฺโต"
   },
 ]
